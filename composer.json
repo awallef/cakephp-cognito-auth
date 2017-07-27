@@ -4,8 +4,7 @@
   "type": "cakephp-plugin",
   "require": {
     "php": ">=5.5.9",
-    "cakephp/cakephp": "^3.3",
-    "awallef/cakephp-redis":"^3.4"
+    "cakephp/cakephp": "^3.3"
   },
   "suggest": {
     "awallef/cakephp-redis": "nice plugin to store/chek tokens in redis"
