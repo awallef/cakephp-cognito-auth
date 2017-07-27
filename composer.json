@@ -1,0 +1,27 @@
+{
+  "name": "awallef/cakephp-cognito-auth",
+  "description": "CakePHP AWS cognito auth",
+  "type": "cakephp-plugin",
+  "require": {
+    "php": ">=5.5.9",
+    "cakephp/cakephp": "^3.3",
+    "awallef/cakephp-redis":"^3.4"
+  },
+  "suggest": {
+    "awallef/cakephp-redis": "nice plugin to store/chek tokens in redis"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "*"
+  },
+  "autoload": {
+    "psr-4": {
+      "Awallef\\CognitoAuth\\": "src"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "Awallef\\CognitoAuth\\Test\\": "tests",
+      "Cake\\Test\\": "./vendor/cakephp/cakephp/tests"
+    }
+  }
+}
