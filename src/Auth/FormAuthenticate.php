@@ -13,7 +13,6 @@ class FormAuthenticate extends BaseAuthenticate
         return false;
       }
     }
-
     return true;
   }
 

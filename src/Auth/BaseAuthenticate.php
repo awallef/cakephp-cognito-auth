@@ -8,6 +8,7 @@ use Cake\Http\Response;
 use Cake\Http\ServerRequest;
 use Cake\Event\Event;
 use Cake\Core\Configure;
+use Cake\ORM\TableRegistry;
 
 use Cake\Network\Exception\UnauthorizedException;
 use Cake\Network\Exception\BadRequestException;
@@ -30,6 +31,9 @@ class BaseAuthenticate extends CakeBasicAuthenticate
     'contain' => null,
     'passwordHasher' => 'Default',
 
+    // create users
+    'create' => false,
+
     // aws stuff
     'version' => 'latest',
     'realm' => 'exemple.ch WEB API',
@@ -42,7 +46,7 @@ class BaseAuthenticate extends CakeBasicAuthenticate
     'clientId' => 'XXX',
     'clientSecret' => 'XXX',
 
-    // Groups managment
+    // Groups management
     'groupImplode' => true,
     'groupImplodeGlue' => ',',
 
@@ -217,7 +221,12 @@ class BaseAuthenticate extends CakeBasicAuthenticate
       }
     }
 
-    debug($user);
+    // create user if asked
+    if($this->config('create')){
+      $table = TableRegistry::get($this->config('userModel'));
+      $entity = $table->patchEntity($table->newEntity(), $user);
+      $table->save($entity);
+    }
     return $user;
   }
 
