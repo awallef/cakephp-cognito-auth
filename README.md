@@ -175,3 +175,18 @@ Model Entity:
 		'*' => true,
 		'id' => true
 	];
+## Challenge
+if you recieve a challenge error such as:
+	
+	SMS_MFA
+	PASSWORD_VERIFIER
+	ADMIN_NO_SRP_AUTH
+	NEW_PASSWORD_REQUIRED
+	
+redirect, or ask user to provide responses in request data object:
+	
+	// + username + password => required 
+	// 'USERNAME' and 'SECRET_HASH' => will be filled for you
+	$request->data['Challenge']['responses'] // must be filled
+	
+please refer to : [aws php SDK](http://docs.aws.amazon.com/aws-sdk-php/v3/api/api-cognito-idp-2016-04-18.html#adminrespondtoauthchallenge) #adminrespondtoauthchallenge
