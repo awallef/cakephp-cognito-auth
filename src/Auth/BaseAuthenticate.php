@@ -18,6 +18,19 @@ class BaseAuthenticate extends CakeBasicAuthenticate
   protected $_client;
 
   protected $_defaultConfig = [
+
+    // traditional stuff
+    'fields' => [
+        'username' => 'username',
+        'password' => 'password'
+    ],
+    'userModel' => 'Users',
+    'scope' => [],
+    'finder' => 'all',
+    'contain' => null,
+    'passwordHasher' => 'Default',
+
+    // aws stuff
     'version' => 'latest',
     'realm' => 'exemple.ch WEB API',
     'region'  => 'eu-central-1',
