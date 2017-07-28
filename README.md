@@ -33,34 +33,35 @@ Configure your auth component with your aws credentials & info
 			'clientSecret' => 'XX',
 
 			// traditional stuff - OPTIONAL ( here default values )
-	    'fields' => [
-	        'username' => 'username',
-	        'password' => 'password'
-	    ],
-	    'userModel' => 'Users',
-	    'scope' => [],
-	    'finder' => 'all',
-	    'contain' => null,
-	    'passwordHasher' => 'Default',
-
-	    // create users - OPTIONAL ( here default values ) see User model below
-	    'create' => false,
-
-	    // Groups management - OPTIONAL ( here default values ) whether you want to keep an array or not
-	    'groupImplode' => true,
-	    'groupImplodeGlue' => ',',
-
-			// renaming - OPTIONAL ( here default values )
-	    'fieldsMapping' => [
-	      'Username' => 'username',
-	      'Enabled' => 'is_active',
-	      'UserStatus' => 'status',
-	      'sub' => 'id',
-	      'Groups' => 'role'
-	    ]
-
-	    // values functions - OPTIONAL ( default value is [] ) triggered after fieldsMapping (renaming)
-	    'valuesPostOperations' => [
+		    'fields' => [
+		        'username' => 'username',
+		        'password' => 'password'
+		    ],
+		    'userModel' => 'Users',
+		    'scope' => [],
+		    'finder' => 'all',
+		    'contain' => null,
+		    'passwordHasher' => 'Default',
+	
+		    // create users - OPTIONAL ( here default values ) see User model below
+		    'create' => false,
+	
+		    // Groups management - OPTIONAL ( here default values ) whether you want to keep an array or not
+		    'groupImplode' => true,
+		    'groupImplodeGlue' => ',',
+	
+			// renaming - OPTIONAL ( here default values + sepcial is_superuser )
+		    'fieldsMapping' => [
+		      'Username' => 'username',
+		      'Enabled' => 'is_active',
+		      'UserStatus' => 'status',
+		      'sub' => 'id',
+		      'Groups' => 'role',
+		      'new key' => 'is_superuser', // in order to use cakeDC/Auth
+		    ]
+	
+		    // values functions - OPTIONAL ( default value is [] ) triggered after fieldsMapping (renaming)
+		    'valuesPostOperations' => [
 				'role' => function($user, $value){
 					return empty($user['role'])? 'no role': $user['role'];
 				},
@@ -68,7 +69,6 @@ Configure your auth component with your aws credentials & info
 					return (is_string($user['role']) && $user['role'] == 'superuser');
 				},
 			],
-
 		],
 	]
 
@@ -104,36 +104,37 @@ Configure your auth component with your aws credentials & info
 			'userPoolId' => 'eu-central-1_XX',
 			'clientId' => 'XX',
 			'clientSecret' => 'XX',
-
+	
 			// traditional stuff - OPTIONAL ( here default values )
-	    'fields' => [
-	        'username' => 'username',
-	        'password' => 'password'
-	    ],
-	    'userModel' => 'Users',
-	    'scope' => [],
-	    'finder' => 'all',
-	    'contain' => null,
-	    'passwordHasher' => 'Default',
-
-	    // create users - OPTIONAL ( here default values ) see User model below
-	    'create' => false,
-
-	    // Groups management - OPTIONAL ( here default values ) whether you want to keep an array or not
-	    'groupImplode' => true,
-	    'groupImplodeGlue' => ',',
-
-			// renaming - OPTIONAL ( here default values )
-	    'fieldsMapping' => [
-	      'Username' => 'username',
-	      'Enabled' => 'is_active',
-	      'UserStatus' => 'status',
-	      'sub' => 'id',
-	      'Groups' => 'role'
-	    ]
-
-	    // values functions - OPTIONAL ( default value is [] ) triggered after fieldsMapping (renaming)
-	    'valuesPostOperations' => [
+		    'fields' => [
+		        'username' => 'username',
+		        'password' => 'password'
+		    ],
+		    'userModel' => 'Users',
+		    'scope' => [],
+		    'finder' => 'all',
+		    'contain' => null,
+		    'passwordHasher' => 'Default',
+	
+		    // create users - OPTIONAL ( here default values ) see User model below
+		    'create' => false,
+	
+		    // Groups management - OPTIONAL ( here default values ) whether you want to keep an array or not
+		    'groupImplode' => true,
+		    'groupImplodeGlue' => ',',
+	
+			// renaming - OPTIONAL ( here default values + sepcial is_superuser )
+		    'fieldsMapping' => [
+		      'Username' => 'username',
+		      'Enabled' => 'is_active',
+		      'UserStatus' => 'status',
+		      'sub' => 'id',
+		      'Groups' => 'role',
+		      'new key' => 'is_superuser', // in order to use cakeDC/Auth
+		    ]
+	
+		    // values functions - OPTIONAL ( default value is [] ) triggered after fieldsMapping (renaming)
+		    'valuesPostOperations' => [
 				'role' => function($user, $value){
 					return empty($user['role'])? 'no role': $user['role'];
 				},
@@ -141,7 +142,6 @@ Configure your auth component with your aws credentials & info
 					return (is_string($user['role']) && $user['role'] == 'superuser');
 				},
 			],
-
 		],
 	]
 
