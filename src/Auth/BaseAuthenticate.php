@@ -69,7 +69,9 @@ class BaseAuthenticate extends CakeBasicAuthenticate
 
   public function client()
   {
-    return $this->_client? $this->_client: new CognitoIdentityProviderClient(['version' => $this->config('version'),'region'  => $this->config('region'), 'credentials' => $this->config('credentials') ]);
+    if(!$this->_client)
+      $this->_client = new CognitoIdentityProviderClient(['version' => $this->config('version'),'region'  => $this->config('region'), 'credentials' => $this->config('credentials') ]);
+    return $this->_client;
   }
 
   public function secretHash($username)
